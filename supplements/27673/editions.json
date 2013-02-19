@@ -1,0 +1,21 @@
+{
+  "entries": [
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/editions/28703.json"
+        }
+      }
+    }
+  ],
+
+  "offset": 0,
+  "limit":  10,
+  "total":  1,
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/supplements/27673/editions.json"
+    }
+  }
+}

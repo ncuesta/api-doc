@@ -1,0 +1,28 @@
+{
+  "id":             "786213",
+  "slug":           "2012-12-30-new-years-eve",
+  "title":          "About New Year's Eve",
+  "heading":        "",
+  "lead":           "",
+  "body":           "<p>Body</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+  "signature":      "Johnny B. Goode",
+  "show_signature": true,
+  "datetime":       "2012-12-30T22:00:00",
+  "show_date":      true,
+  "show_time":      false,
+
+  "links": {
+    "self": {
+      "href":       "http://api.dev/articles/786213.json"
+    },
+    "edition": {
+      "href":       "http://api.dev/editions/28703.json"
+    },
+    "section": {
+      "href":       "http://api.dev/sections/71532.json"
+    },
+    "tags": {
+      "href":       "http://api.dev/articles/786213/tags.json"
+    }
+  }
+}

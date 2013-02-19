@@ -1,0 +1,19 @@
+{
+  "id":         "71532",
+  "slug":       "el-mundo",
+  "title":      "El Mundo",
+  "is_root":    true,
+  "is_visible": true,
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/sections/71532.json"
+    },
+    "supplement": {
+      "href": "http://api.dev/supplements/27673.json"
+    },
+    "edition": {
+      "href": "http://api.dev/editions/28703.json"
+    }
+  }
+}

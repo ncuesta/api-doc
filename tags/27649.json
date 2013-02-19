@@ -1,0 +1,11 @@
+{
+  "id":   "27649",
+  "slug": "comercio",
+  "name": "Comercio",
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/tags/27649.json"
+    }
+  }
+}

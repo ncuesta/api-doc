@@ -1,0 +1,35 @@
+{
+  "entries": [
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/24001.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/27649.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/14008.json"
+        }
+      }
+    }
+  ],
+
+  "offset": 0,
+  "limit":  10,
+  "total":  3,
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/articles/786213/tags.json"
+    }
+  }
+}

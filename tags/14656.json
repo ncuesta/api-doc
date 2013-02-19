@@ -1,0 +1,11 @@
+{
+  "id":   "14656",
+  "slug": "tag-14656",
+  "name": "Tag 14656",
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/tags/14656.json"
+    }
+  }
+}

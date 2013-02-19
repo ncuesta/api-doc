@@ -1,0 +1,22 @@
+{
+  "id":         "4265",
+  "slug":       "el-pais",
+  "title":      "El Pa&iacute;s",
+  "is_root":    false,
+  "is_visible": true,
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/sections/4265.json"
+    },
+    "parent": {
+      "href": "http://api.dev/sections/71532.json"
+    },
+    "supplement": {
+      "href": "http://api.dev/supplements/27673.json"
+    },
+    "edition": {
+      "href": "http://api.dev/editions/28703.json"
+    }
+  }
+}

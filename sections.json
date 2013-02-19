@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/sections/4265.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/sections/71532.json"
+        }
+      }
+    }
+  ],
+
+  "offset": 0,
+  "limit":  10,
+  "total":  2,
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/sections.json"
+    }
+  }
+}

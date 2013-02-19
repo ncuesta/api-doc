@@ -1,0 +1,27 @@
+{
+  "id":             "123456789",
+  "slug":           "2013-01-01-articles-title",
+  "title":          "Article's <em>title</em>",
+  "heading":        "<b>Short</b> heading",
+  "lead":           "Lead paragraph",
+  "body":           "<p>Body</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+  "signature":      "",
+  "show_signature": false,
+  "datetime":       "2013-01-01T12:00:00",
+  "show_date":      false,
+
+  "links": {
+    "self": {
+      "href":       "http://api.dev/articles/123456789.json"
+    },
+    "edition": {
+      "href":       "http://api.dev/editions/28703.json"
+    },
+    "section": {
+      "href":       "http://api.dev/sections/4265.json"
+    },
+    "tags": {
+      "href":       "http://api.dev/articles/123456789/tags.json"
+    }
+  }
+}

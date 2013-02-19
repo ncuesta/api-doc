@@ -1,0 +1,11 @@
+{
+  "id":   "14008",
+  "slug": "pais",
+  "name": "Pa&iacute;s",
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/tags/14008.json"
+    }
+  ]
+}

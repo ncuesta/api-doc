@@ -1,0 +1,11 @@
+{
+  "id":   "24001",
+  "slug": "argentina",
+  "name": "Argentina",
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/tags/24001.json"
+    }
+  }
+}

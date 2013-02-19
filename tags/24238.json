@@ -1,0 +1,11 @@
+{
+  "id":   "24238",
+  "slug": "la-plata",
+  "name": "La Plata",
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/tags/24238.json"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id":         "28703",
+  "name":       "2013-01-01",
+  "is_active":  true,
+  "is_visible": true,
+  "date":       "2013-01-01",
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/editions/28703.json"
+    },
+    "supplement": {
+      "href": "http://api.dev/supplements/27673.json"
+    },
+    "articles": {
+      "href": "http://api.dev/supplements/28703/articles.json"
+    }
+  }
+}

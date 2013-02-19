@@ -1,0 +1,87 @@
+{
+  "entries": [
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/10315.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/11299.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/11633.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/12612.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/13586.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/14008.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/14656.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/15382.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/16906.json"
+        }
+      }
+    },
+    {
+      "links": {
+        "self": {
+          "href": "http://api.dev/tags/17056.json"
+        }
+      }
+    }
+  ],
+
+  "offset": 0,
+  "limit":  10,
+  "total":  29,
+
+  "links": {
+    "self": {
+      "href": "http://api.dev/tags.json"
+    },
+    "next": {
+      "href": "http://api.dev/tags.json?offset=10"
+    }
+  }
+}
