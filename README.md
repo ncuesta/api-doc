@@ -48,11 +48,11 @@ Any collection (as in "a group of items") must respond with a document like the 
             }
         }
     ],
-    
+
     "offset": 0,
     "limit": 10,
     "total": 2,
-    
+
     "links": {
         "self": {
             "href": "/link/to/self.json"
@@ -89,11 +89,11 @@ Here is a complete example which shows a combination of both of the situations d
 ```json
 {
     "entries": ["Some entries here..."],
-    
+
     "offset": 15,
     "limit": 15,
     "total": 33,
-    
+
     "links": {
         "self": {
             "href": "/people.json?offset=15&limit=15"
@@ -117,7 +117,7 @@ Any individual resource will be defined in a document with its properties, its `
     "id": "1",
     "anAttribute": "some value for an attribute",
     "isValid": true,
-    
+
     "links": {
         "self": {
             "href": "/link/to/self.json"
@@ -141,7 +141,7 @@ Usually, individual documents will be referenced via a simple URI like:
 For instance, a particular book (belonging to the `books` resource type) could be referenced via its ISBN-10 value with the following URI:
 
     /books/1449310508.json
-    
+
 ## Resource Modifiers
 
 Any argument that would modify the current document but which doesn't identify it, is called a **resource modifier** and must be provided as a query string parameter (i.e. after the `?` in the URL).
@@ -189,13 +189,15 @@ Where the `T` is a literall that denotes the separation between both timestamp p
 
 ### URIs and URLs
 
-`TBD` What's better: having absolute or relative URLs for links?
+URIs and URLs must be relative - i.e. no host should be present in them.
 
-## Functional extensions
+This is a **valid** URI:
 
-While this API structure can be simple, it would take many additional requests to the server to retrieve a single document and any of its linked documents. In order to reduce this requests, *[links expansion](#links-expansion)* could be used.
+    /api/books/5678123.json
 
-On the other hand, if a specific request would not need all of the information provided for a document, *[partial responses](#partial-responses)* could be used.
+While this **isn't valid**:
+
+    http://server.example.com/api/books/5678123.json
 
 ### Links expansion
 
@@ -203,14 +205,77 @@ By providing the `expand` [resource modifier](#resource-modifiers), the linked r
 
 #### Syntax
 
-`TBD` Syntax should allow to reference nested elements and collective ones.
+Links to be expanded can be specified with a comma-separated list of values, where each value represents a key under the `links` section in a given scope. Non-existing keys will be ignored and yield no error. The only exception to this is the `entries` key which will match the `entries` field in any collective document, and will replace **in the same place** the contents of the `entries` field with the expanded entries.
+
+Expansion scopes are enclosed by parentheses (`(` and `)`), and they represent the means to recursive link expansion. If the need to recursively expand links should exist, we just need to group the expansions in the same level with parentheses, like this:
+
+    GET /books.json?expand=entries(self(author,publisher))
+
+The above request will get the `books` resources and expand the `entries` via their `self` links, and in each sub-resource ("each book", a sub-scope) it will expand the `author` and `publisher` links (if each of them exists), adding two new properties to the "book": `author` and `publisher`. Please refer to the example in this section for further details into this.
+
+Deeper recursive expansion can be achieved by adding more scopes. For instance:
+
+    GET /authors.json?expand=entries(self(publisher(books(entries(self)))))
+
+This will result in some response like follows - for the sake of simplicity the actual fields are omitted, as we are focusing on the structure of the response:
+
+    GET /authors.json?expand=entries(self(publisher(books(entries(self)))))
+
+```json
+{
+    "entries": [
+        {
+            "id": "...",
+            "name": "...",
+            "publisher": {
+                "id": "...",
+                "name": "...",
+                "books": [
+                    {
+                        "id": "...",
+                        "isbn10": "...",
+                        "isbn13": "...",
+                        "links": {
+                            "self": {
+                                "href": "..."
+                            },
+                            "author": {
+                                "href": "..."
+                            },
+                            "publisher": {
+                                "href": "..."
+                            }
+                        }
+                    },
+                    {
+                        "id": "...",
+                        "isbn10": "...",
+                        "isbn13": "...",
+                        "links": {
+                            "self": {
+                                "href": "..."
+                            },
+                            "author": {
+                                "href": "..."
+                            },
+                            "publisher": {
+                                "href": "..."
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
 
 #### Example
 
 If we were to get a book, its author and publishing company, **without links expansion**, we would need to make 3 requests:
 
     GET /books/1449310508.json
-    
+
 ```json
 {
     "id": "1449310508",
@@ -220,7 +285,7 @@ If we were to get a book, its author and publishing company, **without links exp
     "language": "English",
     "rating": 2.6,
     "publishedAt": "2011-10-28",
-    
+
     "links": {
         "self": {
             "href": "/books/1449310508.json"
@@ -242,7 +307,7 @@ If we were to get a book, its author and publishing company, **without links exp
     "id": "B005WVDZOU",
     "name": "Mark Masse",
     "bio": "Mark Masse resides in Seattle, where he is a Senior Director of Engineering at ESPN.",
-    
+
     "links": {
         "self": {
             "href": "/authors/B005WVDZOU.json"
@@ -260,7 +325,7 @@ If we were to get a book, its author and publishing company, **without links exp
 {
     "id": "DJSA3217",
     "name": "O'Reilly Media",
-    
+
     "links": {
         "self": {
             "href": "/publishers/DJSA3217.json"
@@ -275,7 +340,7 @@ If we were to get a book, its author and publishing company, **without links exp
 But **with links expansion**, we would only need one request:
 
     GET /books/1449310508.json?expand=author,publisher
-    
+
 ```json
 {
     "id": "1449310508",
@@ -285,12 +350,12 @@ But **with links expansion**, we would only need one request:
     "language": "English",
     "rating": 2.6,
     "publishedAt": "2011-10-28",
-    
+
     "author": {
         "id": "B005WVDZOU",
         "name": "Mark Masse",
         "bio": "Mark Masse resides in Seattle, where he is a Senior Director of Engineering at ESPN.",
-    
+
         "links": {
             "self": {
                 "href": "/authors/B005WVDZOU.json"
@@ -300,11 +365,11 @@ But **with links expansion**, we would only need one request:
             }
         }
     },
-    
+
     "publisher": {
         "id": "DJSA3217",
         "name": "O'Reilly Media",
-    
+
         "links": {
             "self": {
                 "href": "/publishers/DJSA3217.json"
@@ -314,7 +379,7 @@ But **with links expansion**, we would only need one request:
             }
         }
     },
-    
+
     "links": {
         "self": {
             "href": "/books/1449310508.json?expand=author,publisher"
@@ -342,7 +407,7 @@ For example, if we were asking for the author document shown above (`/authors/B0
 ```json
 {
     "name": "Mark Masse",
-    
+
     "links": {
         "self": {
             "href": "/authors/B005WVDZOU.json?fields=name"
