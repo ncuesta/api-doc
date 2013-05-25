@@ -1,8 +1,8 @@
 # api-doc
 
-## A REST API
+## A REST API + Hypermedia
 
-This design is thought to be used as an implementation of a REpresentational State Transfer ([REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)) API. The present definition is intended to serve as both an example and the documentation for a particular case of this API document structure.
+This design is thought to be used as an implementation of a REpresentational State Transfer ([REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)) API with a heavy stress on the importance of the use of Hypermedia. The present definition is intended to serve as both an example and the documentation for a particular case of this API document structure.
 
 ## Documents format
 
@@ -438,10 +438,10 @@ This example is intended to model a basic structure.
 
 The following resources are available:
 
-    /articles.json
-    /editions.json
-    /sections.json
-    /supplements.json
-    /tags.json
+- `/articles.json`
+- `/editions.json`
+- `/sections.json`
+- `/supplements.json`
+- `/tags.json`
 
 They are the collective resources that support the `GET` HTTP verb and return a paginated collection of items, following the structure described in the [Collective documents section](#collective-documents).

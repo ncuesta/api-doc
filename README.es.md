@@ -1,10 +1,9 @@
 # api-doc
 
-Una estructura propuesta para ser utilizada como un ejemplo para documentar la interacción con una posible API.
 
-## API REST
+## API REST + Hypermedia
 
-El presente diseño está pensado para ser utilizado como una implementación de una API [REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm).
+El presente diseño está pensado para ser utilizado como una implementación de una API [REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) haciendo hincapié en la importancia del uso de *Hypermedia*.
 
 ## Formato de los documentos
 
@@ -120,3 +119,21 @@ A continuación se presenta un ejemplo que muestra una combinación de las situa
     }
 }
 ```
+
+## Documentos individuales
+
+## Modificadores de recurso
+
+## Tipos de datos
+
+## Sobre este ejemplo
+
+Los siguientes recursos están disponibles:
+
+- `/articles.json`
+- `/editions.json`
+- `/sections.json`
+- `/supplements.json`
+- `/tags.json`
+
+Estos son los recursos colectivos que soportan el verbo HTTP `GET` y retornan una colección paginada de elementos, siguiendo la estructura especificada en [la sección referente a colecciones](#colecciones).
