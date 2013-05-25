@@ -89,3 +89,34 @@ La *paginación* antes mencionada se logra utilizando parámetros mediante el *q
 
     /people.json?offset=15
     /people.json?offset=20&limit=20
+
+En los casos que un documento colectivo deba utilizar paginación, incluirá hasta 2 vínculos adicionales que permitirán recorrer la lista completa de elementos mediante el uso de hypermedia: `previous` y/o `next`.
+
+- Si el `offset` actual es mayor que `0` y se dispone de más de 1 elemento, la *página* actual no será la primera de la colección, por lo que se incluirá un vínculo `previous` (que debe incluir cualquier [*modificador de recurso*](#modificadores-de-recurso)) con el `offset` de la página anterior (teniendo en cuenta el `limit` especificado) denotando que la página no es la primera en la colección.
+- Si el `offset` actual es tal que la página actual no es la última en la colección, se incluirá un vínculo `next` (que debe incluir cualquier [*modificador de recurso*](#modificadores-de-recurso)) con el `offset` de la página anterior (teniendo en cuenta el `limit` especificado) que marcaráque la página no es la última de la colección.
+
+A continuación se presenta un ejemplo que muestra una combinación de las situaciones de paginación antes descriptas:
+
+```json
+{
+    "entries": [
+        ...
+    ],
+
+    "offset": 15,
+    "limit": 15,
+    "total": 33,
+
+    "links": {
+        "self": {
+            "href": "/people.json?offset=15&limit=15"
+        },
+        "previous": {
+            "href": "/people.json?offset=0&limit=15"
+        },
+        "next": {
+            "href": "/people.json?offset=30&limit=15"
+        }
+    }
+}
+```
