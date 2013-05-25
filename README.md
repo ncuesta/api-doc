@@ -97,7 +97,9 @@ Here is a complete example which shows a combination of both of the situations d
 
 ```json
 {
-    "entries": ["Some entries here..."],
+    "entries": [
+        ...
+    ],
 
     "offset": 15,
     "limit": 15,
