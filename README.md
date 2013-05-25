@@ -6,6 +6,10 @@ An API structure (or standard?) intended to be used as a documentation example.
 
 This design is thought to be used as an implementation of a REpresentational State Transfer ([REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)) API. The present definition is intended to serve as both an example and the documentation for a particular case of this API document structure.
 
+## Documents format
+
+Every document will be expressed using the JavaScript Object Notation (*JSON*) for the sake of readability and expressiveness, but it is fairly trivial to translate all the examples to another format like *XML* or even *HTML*.
+
 ## Hypermedia and common attributes
 
 All documents (hence, all resources) must use hypermedia links to reference external relations or complimentary resources that do not strictly belong to the set of own attributes. Aside from that, all documents must include a link to themselves under the `self` relation key.
@@ -24,7 +28,12 @@ Links for any document or resource must be defined inside the `links` attribute,
 
 As this is a minimal definition of a link, any other attributes might be added if needed as long as this basic structure is still maintained.
 
-The only reserved relation key is `self`, any other value can be used.
+The following relation keys are reserved:
+
+- `self`: indicates the link which can be followed in order to get the same resource again. As stated before, this relation key will be present in every document and should contain any parameters passed to obtain the current resource.
+- `previous`: this relation indicates the link that should be followed in order to get the previous page on a paginated collective response. This will only be present when the current collective document has a previous page.
+- `next`: this relation indicates the link that should be followed in order to get the next page on a paginated collective response. This will only be present when the current collective document has a next page.
+- `full`: this relation represents the link that needs to be used in order to retrieve the full version of a partial response document. Please refer to the dedicated section for further details.
 
 ## Collective documents
 
@@ -62,13 +71,13 @@ Any collection (as in "a group of items") must respond with a document like the 
 ```
 
 * `entries`: An `array` of items, where each item is a link to the actual collection element.
-* `offset`: An `integer` indicating the offset in the collection of elements from which the current page is taking elements. This is the base index for the current span of elements (page).
+* `offset`: A `0`-based `integer` index indicating the offset in the collection of elements from which the current page is taking elements. This is the base index for the current span of elements (page).
 * `limit`: An `integer` indicating the maximum number of elements that will be included in the current span of elements (page). A sensible default value should be considered for this attribute.
 * `total`: An `integer` indicating the total number of elements available in the collection.
 
 As collections represent resource types or logical groupings of resources, they should be accessed in simple URIs like:
 
-    /<resource-type>.json
+    /<resource-type-in-plural>.json
 
 For instance, if we wanted to reference the people in a data set, we would use the following URI:
 
