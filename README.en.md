@@ -163,11 +163,13 @@ Field types must be consistently represented. Following is a list of the standar
 
 ### Numbers
 
-Numbers can be represented as `integer` elements (`0`, `200`, `4019`), `float` elements (`0.5`, `3.0`, `68622.42`) or as arbitrary precision and longitude numbers which are represented by strings (`8126318281987921632167`, `921763.8126326178321531245632571`).
+Numbers can be represented as `integer` elements (`0`, `200`, `4019`), `float` elements (`0.5`, `3.0`, `68622.42`) or as arbitrary precision and longitude numbers which are represented by strings (`"8126318281987921632167"`, `"921763.8126326178321531245632571"`).
 
 ### Identifiers
 
-Primary Key identifiers must always be represented as `string`, even if they are not big numbers: `1`, `105`, `18291278321678421678321678321`. This ensures consistency accross documents and resource types.
+Primary Key identifiers must always be represented as `string`, even if they are not big numbers. This ensures consistency accross different resource types.
+
+Some valid identifiers: `"1"`, `"105"`, `"18291278321678421678321678321"`, `"my-id"`, or "abc-123-zyx-987"`.
 
 ### Boolean
 
@@ -207,6 +209,8 @@ This is a **valid** URI:
 While this **isn't valid**:
 
     http://server.example.com/api/books/5678123.json
+
+## Functional extensions
 
 ### Links expansion
 

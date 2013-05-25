@@ -1,13 +1,14 @@
 # api-doc
 
-
 ## API REST + Hypermedia
 
 El presente diseño está pensado para ser utilizado como una implementación de una API [REST](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) haciendo hincapié en la importancia del uso de *Hypermedia*.
 
+
 ## Formato de los documentos
 
 Todos los documentos aquí ejemplificados utilizan el formato *JSON* por motivos de legibilidad y poder expresivo. Si bien es también una recomendación el uso de tal formato para las implementaciones que surjan del presente ejemplo, es relativamente simple llevar estos ejemplos a otros formatos, ya sea *XML*, *HTML* o cualquier otro formato estructurado.
+
 
 ## Hypermedia y atributos generales
 
@@ -33,6 +34,7 @@ La siguientes claves de relación son *reservadas*:
 - `previous`: Utilizado en documentos colectivos con paginación, indica el vínculo a seguir para obtener el documento correspondiente a la *página* anterior de la colección. Estará presente cuando se disponga de una página anterior en una colección paginada.
 - `next`: Análogamente a `previous`, es el vínculo que permite obtener el documento correspondiente a la siguiente página de la colección, dadas las opciones de paginación provistas al obtener un documento. Estará presente cuando se disponga de una página siguiente en una colección paginada.
 - `full`: Indica el vínculo que se puede utilizar para obtener la versión *completa* de un documento en casos que se haya realizado una solicitud *parcial*. Para mayores detalles, referirse a la sección dedicada a las *respuestas parciales*.
+
 
 ## Colecciones
 
@@ -120,13 +122,58 @@ A continuación se presenta un ejemplo que muestra una combinación de las situa
 }
 ```
 
+
 ## Documentos individuales
+
 
 ## Modificadores de recurso
 
+
 ## Tipos de datos
 
+Los valores de los atributos deben representarse *consistentemente*. A continuación se brinda una lista con las representaciones estándar para los tipos de datos más comunes:
+
+### Números
+
+Los números pueden ser expresados como valores `integer` (`0`, `200`, `4019`), como valores `float` (`0.5`, `3.0`, `68622.42`), o como valores de precisión y longitud arbitrarias mediante el empleo de `string` (`"8126318281987921632167"`, `"921763.8126326178321531245632571"`).
+
+### Identificadores
+
+Los identificadores de clave primaria deben estar representados como `string`, aún siendo números pequeños enteros. Esto asegurará la consistencia entre distintos tipos de recursos.
+
+Ejemplos válidos de identificadores son: `"1"`, `"105"`, `"18291278321678421678321678321"`, `"my-id"`, or "abc-123-zyx-987"`.
+
+### Booleanos
+
+### String
+
+### Fecha
+
+### Hora
+
+### Timestamp (fecha y hora)
+
+### URIs/URLs
+
+Las referencias a recursos deben ser *relativas*. Esto quiere decir que no se debe incluir información del host donde se ubiquen los recursos en sus URIs.
+
+La siguiente es una URI **válida**:
+
+    /api/books/5678123.json
+
+Mientras que esta **no lo es**:
+
+    http://server.example.com/api/books/5678123.json
+
+
+## Extensiones funcionales
+
+
 ## Sobre este ejemplo
+
+El presente ejemplo intenta modelar una estructura básica de API que respete los lineamientos definidos en este proyecto.
+
+### Recursos
 
 Los siguientes recursos están disponibles:
 
