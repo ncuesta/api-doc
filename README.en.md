@@ -191,12 +191,10 @@ Time values must be represented with a `string` in the [ISO 8601](http://en.wiki
 
 Full timetamp values must be represented with a `string` formatted in the [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) standard:
 
-    YYYY-MM-DDThh:mm[:ss]
-    <  DATE  >T<  TIME  >
+    YYYY-MM-DDThh:mm[:ss][±hh:mm]
+    <  DATE  >T<  TIME  >< ZONE >
 
-Where the `T` is a literall that denotes the separation between both timestamp parts.
-
-`TBD` Is it of value to specify the Timezone in the timestamps?
+Where the `T` is a literal that denotes the separation between both timestamp parts and the optional (Time)zone is a relative time span from the UTC zone. For instance, for Argentina's time zone: `-03:00`.
 
 ### URIs and URLs
 
@@ -214,7 +212,7 @@ While this **isn't valid**:
 
 ### Links expansion
 
-By providing the `expand` [resource modifier](#resource-modifiers), the linked resources of a document could also be retrieved in a single request to the server. In a quick overview, the `expand` attribute indicates which links should also be retrieved and injected into the document as new attributes.
+By providing the `expand` [resource modifier](#resource-modifiers), the linked resources of a document can also be retrieved in a single request to the server. In a quick overview, the `expand` attribute indicates which links should also be retrieved and injected into the document as new attributes.
 
 #### Syntax
 
@@ -411,9 +409,9 @@ You may notice that the new root attributes `author` and `publisher` correspond 
 
 ### Partial responses
 
-When not all the data in a document is needed, a partial response can help avoiding some unnecessary overhead by using the `fields` [resource modifier](#resource-modifiers) to indicate the only elements needed from the document.
+When not all the data in a document is needed, a partial response can help avoiding some unnecessary overhead by using the `fields` [resource modifier](#resource-modifiers) to indicate the attributes needed from the document.
 
-For example, if we were asking for the author document shown above (`/authors/B005WVDZOU.json`) but we only cared for the name of the author, we could make the following request to get a partial response containing only the data we needed:
+For example, if we were asking for the `author` document shown above (`/authors/B005WVDZOU.json`) but we only cared for the name of the author, we could make the following request to get a partial response containing only the data we needed:
 
     GET /authors/B005WVDZOU.json?fields=name
 
