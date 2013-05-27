@@ -432,6 +432,11 @@ For example, if we were asking for the `author` document shown above (`/authors/
 
 You may notice that the `links` attribute is still included, even when not explicitly requested, but it only includes two relations: `self` (as usual) and `full`, which links to the full resource.
 
+## Errors
+
+`TBD`
+
+
 ## About this example
 
 This example is intended to model a basic structure.
